@@ -36,7 +36,9 @@ Cypress.Commands.add('selectSize', (size) => {
 Cypress.Commands.add('addToBag', () => {
     cy.get('#add_to_cart').click().log('click on add to bag button')
 
-    cy.wait('@addToBag', { responseTimeout: 30000 })
+    cy.wait('@xhr', { responseTimeout: 30000 }).then(($xhr) => {
+        expect($xhr.response.statusCode).to.eq(200);
+    });
 })
 
 /**

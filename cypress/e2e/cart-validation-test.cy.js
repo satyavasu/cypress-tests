@@ -2,9 +2,7 @@ describe('validate cart page', () => {
   before(() => {
     cy.visit('/index.php')
 
-    cy.intercept('POST', '/index.php?rand=*').as('addToBag')
-    cy.intercept('POST', '/index.php?rand=*').as('removeFromBag')
-
+    cy.intercept('POST', '/index.php?rand=*').as('xhr')
   })
   it('should validate line items and total in cart', () => {
     expect(cy.get('#header_logo')).to.exist
@@ -84,11 +82,11 @@ describe('validate cart page', () => {
     //delete item from cart 
     cy.get('[class="cart_quantity_delete"]').eq(1).click()
 
-    cy.wait('@removeFromBag', { responseTimeout: 30000 }).then(($xhr) => {
+    cy.wait('@xhr', { responseTimeout: 30000 }).then(($xhr) => {
       expect($xhr.response.statusCode).to.eq(200);
     });
 
-    cy.wait(15000)
+    // cy.wait(15000)
 
     //cart items number validation
     cy.cartItemCount(2)
@@ -96,8 +94,10 @@ describe('validate cart page', () => {
     //increase 1st product quantity to 2
     cy.get('[id^="cart_quantity_up_"]').first().click()
 
-    cy.wait('@addToBag', { responseTimeout: 30000 })
-    cy.wait(10000)
+    cy.wait('@xhr', { responseTimeout: 30000 }).then(($xhr) => {
+      expect($xhr.response.statusCode).to.eq(200);
+    });
+    // cy.wait(10000)
 
     //quantity number check for product
     cy.get('[class^="cart_quantity_input"]').first().should('have.value', 2)
