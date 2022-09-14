@@ -9,7 +9,7 @@ describe('validate cart page', () => {
 
     const NUMERIC_REGEXP = /[+-]?\d+(\.\d+)?/g;
 
-    //add 1st product to bag
+    //add Faded Short Sleeve T-shirts product to bag
     cy.clickOnProduct('Faded Short Sleeve T-shirts')
 
     //select size M
@@ -30,7 +30,7 @@ describe('validate cart page', () => {
     //click on logo
     cy.clickHomePageIcon()
 
-    //add 2nd product to bag
+    //add Blouse product to bag
     cy.clickOnProduct('Blouse')
 
     //select size S
@@ -42,10 +42,10 @@ describe('validate cart page', () => {
     //add to bag
     cy.addToBag()
 
-    /* //validate added product deltails on shipping cart popup window
+    //validate added product deltails on shipping cart popup window
      cy.get('#layer_cart_product_title').contains('Blouse')
      cy.get('#layer_cart_product_attributes').contains('Black, S')
-     cy.get('#layer_cart_product_quantity').contains('1')*/
+     cy.get('#layer_cart_product_quantity').contains('1')
 
     //continue shopping
     cy.continueShippingButton()
@@ -56,8 +56,8 @@ describe('validate cart page', () => {
     //click on logo
     cy.clickHomePageIcon()
 
-    //add 3rd product to bag
-    cy.clickOnProduct('Printed Dress')
+    //add Printed Summer Dress product to bag
+    cy.clickOnProduct('Printed Summer Dress')
 
     //select size M
     cy.selectSize('M')
@@ -68,10 +68,10 @@ describe('validate cart page', () => {
     //add to bag
     cy.addToBag()
 
-    /* //validate added product deltails on shipping cart popup window
-     cy.get('#layer_cart_product_title').contains('Printed Dress')
-     cy.get('#layer_cart_product_attributes').contains('Orange, S')
-     cy.get('#layer_cart_product_quantity').contains('1')*/
+    //validate added product deltails on shipping cart popup window
+     cy.get('#layer_cart_product_title').contains('Printed Summer Dress')
+     cy.get('#layer_cart_product_attributes').contains('Orange, M')
+     cy.get('#layer_cart_product_quantity').contains('1')
 
     //Proceed to checkout
     cy.get('[title="Proceed to checkout"]').click()
@@ -86,8 +86,6 @@ describe('validate cart page', () => {
       expect($xhr.response.statusCode).to.eq(200);
     });
 
-    // cy.wait(15000)
-
     //cart items number validation
     cy.cartItemCount(2)
 
@@ -97,7 +95,6 @@ describe('validate cart page', () => {
     cy.wait('@xhr', { responseTimeout: 30000 }).then(($xhr) => {
       expect($xhr.response.statusCode).to.eq(200);
     });
-    // cy.wait(10000)
 
     //quantity number check for product
     cy.get('[class^="cart_quantity_input"]').first().should('have.value', 2)
@@ -126,7 +123,7 @@ describe('validate cart page', () => {
 
       expect(secondItemTotal).to.not.equal(0)
       expect(secondItemTotal).to.not.be.null
-      expect(secondItemTotal[0]).to.be.equal(26.00)
+      expect(secondItemTotal[0]).to.be.equal(28.98)
     })
 
     //total products cost
@@ -137,7 +134,7 @@ describe('validate cart page', () => {
       expect(productsTotal).to.not.equal(0)
       expect(productsTotal).to.not.be.null
       expect(productsTotal[0]).to.be.equal(+firstItemTotal + +secondItemTotal)
-      expect(productsTotal[0]).to.be.equal(59.02)
+      expect(productsTotal[0]).to.be.equal(62.00)
     })
 
     //total shipping cost
@@ -158,7 +155,7 @@ describe('validate cart page', () => {
       expect(total).to.not.equal(0)
       expect(total).to.not.be.null
       expect(total[0]).to.be.equal(+productsTotal + +productsShipping)
-      expect(total[0]).to.be.equal(61.02)
+      expect(total[0]).to.be.equal(64.00)
     })
 
   })
