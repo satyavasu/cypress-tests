@@ -11,10 +11,8 @@ describe('validate cart page', () => {
 
     //add Faded Short Sleeve T-shirts product to bag
     cy.clickOnProduct('Faded Short Sleeve T-shirts')
-
     //select size M
     cy.selectSize('M')
-
     //choose color as blue
     cy.get('[id="color_14"]').click()
 
@@ -24,18 +22,16 @@ describe('validate cart page', () => {
     //continue shopping
     cy.continueShippingButton()
 
-    //cart items number validation
+    //number of items in bag after added Faded Short Sleeve T-shirts product
     cy.cartItemCount(1)
 
-    //click on logo
+    //click on home page logo
     cy.clickHomePageIcon()
 
     //add Blouse product to bag
     cy.clickOnProduct('Blouse')
-
     //select size S
     cy.selectSize('S')
-
     //choose color as black
     cy.get('[id="color_11"]').click()
 
@@ -43,25 +39,23 @@ describe('validate cart page', () => {
     cy.addToBag()
 
     //validate added product deltails on shipping cart popup window
-     cy.get('#layer_cart_product_title').contains('Blouse')
-     cy.get('#layer_cart_product_attributes').contains('Black, S')
-     cy.get('#layer_cart_product_quantity').contains('1')
+    cy.get('#layer_cart_product_title').contains('Blouse')
+    cy.get('#layer_cart_product_attributes').contains('Black, S')
+    cy.get('#layer_cart_product_quantity').contains('1')
 
     //continue shopping
     cy.continueShippingButton()
 
-    //cart items number validation
+    //number of items in bag after added Blouse product
     cy.cartItemCount(2)
 
-    //click on logo
+    //click on home page logo
     cy.clickHomePageIcon()
 
     //add Printed Summer Dress product to bag
     cy.clickOnProduct('Printed Summer Dress')
-
     //select size M
     cy.selectSize('M')
-
     //choose color as orange
     cy.get('[id="color_13"]').click()
 
@@ -69,37 +63,37 @@ describe('validate cart page', () => {
     cy.addToBag()
 
     //validate added product deltails on shipping cart popup window
-     cy.get('#layer_cart_product_title').contains('Printed Summer Dress')
-     cy.get('#layer_cart_product_attributes').contains('Orange, M')
-     cy.get('#layer_cart_product_quantity').contains('1')
+    cy.get('#layer_cart_product_title').contains('Printed Summer Dress')
+    cy.get('#layer_cart_product_attributes').contains('Orange, M')
+    cy.get('#layer_cart_product_quantity').contains('1')
 
     //Proceed to checkout
     cy.get('[title="Proceed to checkout"]').click()
 
-    //cart items number validation
+    //number of items in bag after added Printed Summer Dress product
     cy.cartItemCount(3)
 
-    //delete item from cart 
+    //delete Blouse product from cart
     cy.get('[class="cart_quantity_delete"]').eq(1).click()
 
     cy.wait('@xhr', { responseTimeout: 30000 }).then(($xhr) => {
       expect($xhr.response.statusCode).to.eq(200);
     });
 
-    //cart items number validation
+    //number of items in bag after deleted Blouse product from cart
     cy.cartItemCount(2)
 
-    //increase 1st product quantity to 2
+    //Add a second Faded Short Sleeve T Shirt of the same size and colour 
     cy.get('[id^="cart_quantity_up_"]').first().click()
 
     cy.wait('@xhr', { responseTimeout: 30000 }).then(($xhr) => {
       expect($xhr.response.statusCode).to.eq(200);
     });
 
-    //quantity number check for product
+    //quantity number check for Faded Short Sleeve T-shirts product
     cy.get('[class^="cart_quantity_input"]').first().should('have.value', 2)
 
-    //cart items number validation
+    //number of items in bag after increase Faded Short Sleeve T-shirts product in cart
     cy.cartItemCount(3)
 
     var firstItemTotal;
