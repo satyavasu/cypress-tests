@@ -12,7 +12,8 @@ An example project using the automation tool, [Cypress](https://www.cypress.io/)
 - [Folder structure](#Folder-structure)
 - [Cypress custom commands](#Cypress-custom-commands)
 - [Working with XHR](#Working-with-XHR)
-- [continue integration](#continue-integration)
+- [Reports](#Reports)
+- [continue integration](#Continue-integration-(Git-actions))
 - [Contacts](#Contacts)
 
 
@@ -90,10 +91,10 @@ Sample Code -
 
 ![alt text](docs/failed_report_screenshot.png)
 
-## continue integration (Git actions)
+## Continue integration (Git actions)
 - For this cypress automation tests added git actions to run and get the test results by every git push.
 
 ![alt text](docs/gitactions-report.png)
 
-## :email: Contacts
+## Contacts
 Email: vasureddy1991@gmail.com
