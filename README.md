@@ -1,8 +1,8 @@
 # Global radio technical test(Cypress)
 
-An example project using the automation tool, [Cypress](https://www.cypress.io/). These tests are intended to provide examples of common actions you may need in your testing. I've included:
-- page objects
-- various ways of running the tests (via npm scripts)
+This repository contains SDET Technical test for QA role, These tests are written using Cypress UI automation tool.
+
+Tests are written in Page object common action pattern, used mochawesome for HTML reports and used Github actions for Continue integration.
 
 ## Table of Contents
 

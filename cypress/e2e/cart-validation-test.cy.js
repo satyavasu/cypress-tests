@@ -112,6 +112,7 @@ describe('validate cart page', () => {
       expect(firstItemTotal[0]).to.be.equal(33.02)
     })
 
+    //NOTE: Printed Summer Dress products are in discount
     cy.get('[id^="total_product_price_"]').last().invoke('text').then((total) => {
       secondItemTotal = total.match(NUMERIC_REGEXP)
         .map((v) => parseFloat(v));
@@ -143,6 +144,7 @@ describe('validate cart page', () => {
     })
 
     //total cost
+    //NOTE: Printed Summer Dress products are in discount and total amount is not equal to 65.53 
     cy.get('#total_price_container').invoke('text').then(($total) => {
       total = $total.match(NUMERIC_REGEXP)
         .map((v) => parseFloat(v));
