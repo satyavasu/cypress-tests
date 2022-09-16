@@ -91,6 +91,9 @@ Sample Code -
 
 ![failed](docs/failed-report-screenshot.png)
 
+- console output:
+![console-output](docs/console-output.png)
+
 ## Continue integration (GitHub actions)
 - For this cypress automation tests added git actions to run and get the test results by every git push.
 

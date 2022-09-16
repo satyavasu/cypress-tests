@@ -1,4 +1,5 @@
 const { defineConfig } = require("cypress");
+const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
 
 module.exports = defineConfig({
   e2e: {
@@ -8,6 +9,11 @@ module.exports = defineConfig({
     video: false,
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
+      // Terminal output plugin
+      installLogsPrinter(on, {
+        // onFail, always, never
+        printLogsToConsole: "always"
+      });
     }
   },
   reporter: 'cypress-mochawesome-reporter',
