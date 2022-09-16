@@ -1,8 +1,20 @@
-# Cypress automation test example
+# Global radio technical test(ypress)
 
 An example project using the automation tool, [Cypress](https://www.cypress.io/). These tests are intended to provide examples of common actions you may need in your testing. I've included:
 - page objects
 - various ways of running the tests (via npm scripts)
+
+## Table of Contents
+
+- [Requires](#Requires)
+- [Setup](#Setup)
+- [Run the tests](#Run-the-tests)
+- [Folder structure](#Folder-structure)
+- [Cypress custom commands](#Cypress-custom-commands)
+- [Working with XHR](#Working-with-XHR)
+- [continue integration](#continue-integration)
+- [Contacts](#Contacts)
+
 
 ## Requires
 1. Node (download from [here](https://nodejs.org/en/download/))
@@ -53,6 +65,7 @@ Example of commands
     cy.cartItemCount(3)
 
 ```
+
 ## Working with XHR
 
 https://docs.cypress.io/guides/guides/network-requests.html
@@ -76,7 +89,11 @@ Sample Code -
 ![alt text](docs/passed_report_screenshot.png)
 
 ![alt text](docs/failed_report_screenshot.png)
-## Git actions
+
+## continue integration (Git actions)
 - For this cypress automation tests added git actions to run and get the test results by every git push.
 
 ![alt text](docs/gitactions-report.png)
+
+## :email: Contacts
+Email: vasureddy1991@gmail.com
