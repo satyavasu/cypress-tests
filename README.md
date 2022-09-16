@@ -87,14 +87,14 @@ Sample Code -
 
 - Using mochawesome to get the tests report in html format.
 
-![alt text](docs/passed_report_screenshot.png)
+![alt text](./docs/passedReportScreenshot.png)
 
-![alt text](docs/failed_report_screenshot.png)
+![alt text](./docs/failedReportScreenshot.png)
 
 ## Continue integration (GitHub actions)
 - For this cypress automation tests added git actions to run and get the test results by every git push.
 
-![alt text](docs/gitactions-report.png)
+![alt text](./docs/gitactionsReport.png)
 
 ## Contacts
 :email:	Email: vasureddy1991@gmail.com
