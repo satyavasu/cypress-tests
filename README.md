@@ -1,4 +1,4 @@
-# Global radio technical test(cypress)
+# Global radio technical test(Cypress)
 
 An example project using the automation tool, [Cypress](https://www.cypress.io/). These tests are intended to provide examples of common actions you may need in your testing. I've included:
 - page objects
@@ -96,5 +96,5 @@ Sample Code -
 
 ![alt text](docs/gitactions-report.png)
 
-## :email: Contacts
+## Contacts
 Email: vasureddy1991@gmail.com
