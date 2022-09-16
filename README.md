@@ -97,4 +97,4 @@ Sample Code -
 ![alt text](docs/gitactions-report.png)
 
 ## Contacts
-Email: vasureddy1991@gmail.com
+:email:	Email: vasureddy1991@gmail.com
