@@ -6,6 +6,7 @@ describe('validate cart page', () => {
   })
   it('should validate line items and total in cart', () => {
     expect(cy.get('#header_logo')).to.exist
+    cy.url().should('include', '/index.php');
 
     const NUMERIC_REGEXP = /[+-]?\d+(\.\d+)?/g;
 
