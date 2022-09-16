@@ -1,12 +1,12 @@
 describe('validate cart page', () => {
   before(() => {
-    cy.visit('/index.php')
+    cy.visit('/index.php').log('navigating to the url')
 
     cy.intercept('POST', '/index.php?rand=*').as('xhr')
   })
   it('should validate line items and total in cart', () => {
     expect(cy.get('#header_logo')).to.exist
-    cy.url().should('include', '/index.php');
+    cy.url().should('include', '/index.php').log('home page loaded')
 
     const NUMERIC_REGEXP = /[+-]?\d+(\.\d+)?/g;
 
@@ -15,7 +15,7 @@ describe('validate cart page', () => {
     //select size M
     cy.selectSize('M')
     //choose color as blue
-    cy.get('[id="color_14"]').click()
+    cy.get('[id="color_14"]').click().log('choose blue color')
 
     //add to bag
     cy.addToBag()
@@ -34,12 +34,12 @@ describe('validate cart page', () => {
     //select size S
     cy.selectSize('S')
     //choose color as black
-    cy.get('[id="color_11"]').click()
+    cy.get('[id="color_11"]').click().log('choose black color')
 
     //add to bag
     cy.addToBag()
 
-    //validate added product deltails on shipping cart popup window
+    //validate added Blouse product deltails on shipping cart popup window
     cy.get('#layer_cart_product_title').contains('Blouse')
     cy.get('#layer_cart_product_attributes').contains('Black, S')
     cy.get('#layer_cart_product_quantity').contains('1')
@@ -58,24 +58,24 @@ describe('validate cart page', () => {
     //select size M
     cy.selectSize('M')
     //choose color as orange
-    cy.get('[id="color_13"]').click()
+    cy.get('[id="color_13"]').click().log('choose orange color')
 
     //add to bag
     cy.addToBag()
 
-    //validate added product deltails on shipping cart popup window
+    //validate added Printed Summer Dress product deltails on shipping cart popup window
     cy.get('#layer_cart_product_title').contains('Printed Summer Dress')
     cy.get('#layer_cart_product_attributes').contains('Orange, M')
     cy.get('#layer_cart_product_quantity').contains('1')
 
     //Proceed to checkout
-    cy.get('[title="Proceed to checkout"]').click()
+    cy.get('[title="Proceed to checkout"]').click().log('click on the proceed to checkout button')
 
     //number of items in bag after added Printed Summer Dress product
     cy.cartItemCount(3)
 
     //delete Blouse product from cart
-    cy.get('[class="cart_quantity_delete"]').eq(1).click()
+    cy.get('[class="cart_quantity_delete"]').eq(1).click().log('click on the Blouse product delete button')
 
     cy.wait('@xhr', { responseTimeout: 30000 }).then(($xhr) => {
       expect($xhr.response.statusCode).to.eq(200);
@@ -85,7 +85,7 @@ describe('validate cart page', () => {
     cy.cartItemCount(2)
 
     //Add a second Faded Short Sleeve T Shirt of the same size and colour 
-    cy.get('[id^="cart_quantity_up_"]').first().click()
+    cy.get('[id^="cart_quantity_up_"]').first().click().log('click on the quantity increase button for a product')
 
     cy.wait('@xhr', { responseTimeout: 30000 }).then(($xhr) => {
       expect($xhr.response.statusCode).to.eq(200);
